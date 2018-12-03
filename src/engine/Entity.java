@@ -1,5 +1,6 @@
 package engine;
 
+import engine.shapes.Shape;
 import engine.utilities.Location;
 import engine.utilities.UUID;
 
@@ -8,6 +9,7 @@ public class Entity {
     private UUID id;
     private String name;
     private Location location;
+    private Shape shape;
 
     public Entity(){
         this.id = new UUID();
@@ -40,6 +42,14 @@ public class Entity {
 
     public Location getLocation() {
         return location;
+    }
+
+    public Shape getShape() {
+        return shape;
+    }
+
+    public void setShape(Shape shape) {
+        this.shape = shape;
     }
 
     public void updateLocation(int x, int y){

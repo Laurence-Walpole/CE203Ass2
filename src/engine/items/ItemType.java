@@ -2,7 +2,7 @@ package engine.items;
 
 public enum ItemType {
 
-    NORMAL,
+    UTILITY,
     EQUIPMENT,
     CONSUMABLE
 
