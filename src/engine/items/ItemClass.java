@@ -1,0 +1,33 @@
+package engine.items;
+
+import javafx.scene.paint.Color;
+
+public enum ItemClass {
+
+    NORMAL(0.5, "Normal", Color.LIGHTBLUE),
+    MEDIUM(0.3, "Medium", Color.DARKBLUE),
+    RARE(0.15, "Rare", Color.DARKRED),
+    VERY_RARE(0.05, "Very Rare", Color.MEDIUMPURPLE);
+
+    double rarity;
+    String name;
+    Color colour;
+
+    ItemClass(double rarity, String name, Color colour){
+        this.rarity = rarity;
+        this.name = name;
+        this.colour = colour;
+    }
+
+    public double getRarity() {
+        return rarity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Color getColour() {
+        return colour;
+    }
+}
