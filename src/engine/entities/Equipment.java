@@ -17,11 +17,12 @@ public class Equipment extends Item {
         this.equipmentType = equipmentType;
     }
 
-    public Equipment(String name, EquipmentType equipmentType, double attackBonus, double defenceBonus, double hitpointsBonus){
+    public Equipment(String name, EquipmentType equipmentType, double attackBonus, double defenceBonus, double hitpointsBonus, double itemWorth){
         super(name, ItemType.EQUIPMENT);
         this.equipmentType = equipmentType;
         this.attackBonus = attackBonus;
         this.defenceBonus = defenceBonus;
         this.hitpointsBonus = hitpointsBonus;
+        setItemWorth(itemWorth);
     }
 }

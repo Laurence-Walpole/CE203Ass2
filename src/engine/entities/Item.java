@@ -41,4 +41,8 @@ public class Item extends Entity {
     public double getItemWorth() {
         return itemWorth;
     }
+
+    public void setItemWorth(double itemWorth) {
+        this.itemWorth = itemWorth;
+    }
 }

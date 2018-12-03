@@ -8,5 +8,6 @@ import java.util.List;
 public class Constants {
 
     public static List<UUID> UUID_LIST = new ArrayList<>();
+    public static List<Entity> ENTITY_LIST = new ArrayList<>();
 
 }
