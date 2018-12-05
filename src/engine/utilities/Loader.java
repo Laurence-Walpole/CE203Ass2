@@ -40,7 +40,7 @@ public class Loader {
         double defence = Integer.valueOf(components[3]);
         double hitpoints = Integer.valueOf(components[4]);
         double worth = Double.valueOf(components[5]);
-        Entity e;
+        Entity e = new Entity();
 
         switch(type){
             case "WEAPON":
