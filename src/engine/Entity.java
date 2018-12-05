@@ -55,4 +55,9 @@ public class Entity {
     public void updateLocation(int x, int y){
         this.location.setLocation(new Location(x, y));
     }
+
+    @Override
+    public String toString() {
+        return String.format("UUID: %s, Name: %s, Location: %s, Shape: %s", getId().getUuid(), getName(), getLocation(), getShape());
+    }
 }

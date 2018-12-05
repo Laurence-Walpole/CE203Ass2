@@ -4,6 +4,7 @@ import engine.Constants;
 import engine.Entity;
 import engine.entities.Equipment;
 import engine.entities.Item;
+import engine.entities.NPC;
 import engine.items.EquipmentType;
 import engine.items.ItemType;
 
@@ -15,17 +16,14 @@ import java.io.IOException;
 public class Loader {
 
     public static void loadEntities(){
-        File file = new File("C:\\Users\\isair\\IdeaProjects\\CE203Ass2\\entities.conf");
+        File file = new File("C:\\Users\\isair\\IdeaProjects\\CE203\\entities.conf");
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
 
             String line = "";
             while((line = reader.readLine()) != null){
-                if (line.startsWith("#")) continue;
-
-                handleInput(line.split(","));
-
+                if (!line.startsWith("#")) handleInput(line.split(","));
             }
 
         }catch(IOException e){
@@ -35,18 +33,39 @@ public class Loader {
 
     private static void handleInput(String[] components){
         String type = components[0];
+
+        if (type.equals("NPC") || type.equals("CNPC")){
+            return;
+        }
         String name = components[1];
-        double attack = Integer.valueOf(components[2]);
-        double defence = Integer.valueOf(components[3]);
-        double hitpoints = Integer.valueOf(components[4]);
-        double worth = Double.valueOf(components[5]);
-        Entity e = new Entity();
+        int attack = Integer.valueOf(components[2]);
+        int defence = Integer.valueOf(components[3]);
+        int hitpoints = Integer.valueOf(components[4]);
+        int worth = Integer.valueOf(components[5]);
+        Item e = new Item();
 
         switch(type){
             case "WEAPON":
                 e = new Equipment(name, EquipmentType.WEAPON, attack, defence, hitpoints, worth);
+                break;
+            case "SHIELD":
+                e = new Equipment(name, EquipmentType.SHIELD, attack, defence, hitpoints, worth);
+                break;
+            case "ARMOUR":
+                e = new Equipment(name, EquipmentType.ARMOUR, attack, defence, hitpoints, worth);
+                break;
+            case "RING":
+                e = new Equipment(name, EquipmentType.RING, attack, defence, hitpoints, worth);
+                break;
+            case "CONSUMABLE":
+                e = new Item(name, ItemType.CONSUMABLE, worth, hitpoints, new int[] {attack, defence});
+                break;
+            case "UTILITY":
+                e = new Item(name, ItemType.UTILITY, worth);
+                break;
         }
-        Constants.ENTITY_LIST.add(e);
+        if (e.getClass() == Item.class || e.getClass() == Equipment.class) Constants.ITEM_LIST.add(e);
+        else Constants.ENTITY_LIST.add(e);
     }
 
     public static void loadMap(){

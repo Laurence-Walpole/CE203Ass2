@@ -6,7 +6,7 @@ import engine.items.ItemType;
 public class Equipment extends Item {
 
     private EquipmentType equipmentType;
-    private double attackBonus, defenceBonus, hitpointsBonus;
+    private int attackBonus, defenceBonus, hitpointsBonus;
 
     public Equipment(){
         super();
@@ -17,12 +17,34 @@ public class Equipment extends Item {
         this.equipmentType = equipmentType;
     }
 
-    public Equipment(String name, EquipmentType equipmentType, double attackBonus, double defenceBonus, double hitpointsBonus, double itemWorth){
+    public Equipment(String name, EquipmentType equipmentType, int attackBonus, int defenceBonus, int hitpointsBonus, int itemWorth){
         super(name, ItemType.EQUIPMENT);
         this.equipmentType = equipmentType;
         this.attackBonus = attackBonus;
         this.defenceBonus = defenceBonus;
         this.hitpointsBonus = hitpointsBonus;
         setItemWorth(itemWorth);
+    }
+
+    public EquipmentType getEquipmentType() {
+        return equipmentType;
+    }
+
+    public int getAttackBonus() {
+        return attackBonus;
+    }
+
+    public int getDefenceBonus() {
+        return defenceBonus;
+    }
+
+    public int getHitpointsBonus() {
+        return hitpointsBonus;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Name: %s %s, Item Type: %s, Item Worth: %d, Equipment Type: %s, Bonuses: A:%d | D:%d | H:%d",
+                getItemClass(), getName(), getItemType(), getItemWorth(), getEquipmentType(), getAttackBonus(), getDefenceBonus(), getHitpointsBonus());
     }
 }

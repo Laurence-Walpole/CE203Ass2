@@ -16,4 +16,9 @@ public class UUID {
     public String getUuid() {
         return uuid;
     }
+
+    @Override
+    public String toString() {
+        return getUuid();
+    }
 }

@@ -8,7 +8,9 @@ public class Item extends Entity {
 
     private ItemType itemType;
     private ItemClass itemClass;
-    private double itemWorth;
+    private int itemWorth;
+    private double itemModifier;
+    private int[] extraStats;
 
     public Item(){super();}
 
@@ -17,13 +19,34 @@ public class Item extends Entity {
         this.itemType = itemType;
     }
 
+    public Item(String name, ItemType itemType, int itemWorth){
+        super(name);
+        this.itemType = itemType;
+        this.itemWorth = itemWorth;
+    }
+
+    public Item(String name, ItemType itemType, int itemWorth, double itemModifier){
+        super(name);
+        this.itemType = itemType;
+        this.itemWorth = itemWorth;
+        this.itemModifier = itemModifier;
+    }
+
+    public Item(String name, ItemType itemType, int itemWorth, double itemModifier, int[] extraStats){
+        super(name);
+        this.itemType = itemType;
+        this.itemWorth = itemWorth;
+        this.itemModifier = itemModifier;
+        this.extraStats = extraStats;
+    }
+
     public Item(String name, ItemType itemType, ItemClass itemClass){
         super(name);
         this.itemType = itemType;
         this.itemClass = itemClass;
     }
 
-    public Item(String name, ItemType itemType, ItemClass itemClass, double itemWorth){
+    public Item(String name, ItemType itemType, ItemClass itemClass, int itemWorth){
         super(name);
         this.itemType = itemType;
         this.itemClass = itemClass;
@@ -38,11 +61,29 @@ public class Item extends Entity {
         return itemClass;
     }
 
-    public double getItemWorth() {
+    public int getItemWorth() {
         return itemWorth;
     }
 
-    public void setItemWorth(double itemWorth) {
+    public void setItemWorth(int itemWorth) {
         this.itemWorth = itemWorth;
+    }
+
+    public double getItemModifier() {
+        return itemModifier;
+    }
+
+    public int[] getExtraStats() {
+        return extraStats;
+    }
+
+    public Item setItemClass(ItemClass itemClass) {
+        this.itemClass = itemClass;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Name: %s %s, Item Type: %s, Item Worth: %d", getItemClass(), getName(), getItemType(), getItemWorth());
     }
 }

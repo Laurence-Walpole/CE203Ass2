@@ -40,4 +40,9 @@ public class Location {
          this.y = l.getY();
          this.accessible = l.isAccessible();
     }
+
+    @Override
+    public String toString() {
+        return "[x:"+getX()+",y"+getY()+"]";
+    }
 }

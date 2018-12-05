@@ -4,19 +4,21 @@ import javafx.scene.paint.Color;
 
 public enum ItemClass {
 
-    NORMAL(0.5, "Normal", Color.LIGHTBLUE),
-    MEDIUM(0.3, "Medium", Color.DARKBLUE),
-    RARE(0.15, "Rare", Color.DARKRED),
-    VERY_RARE(0.05, "Very Rare", Color.MEDIUMPURPLE);
+    NORMAL(0.5, "Normal", Color.LIGHTBLUE, 0),
+    MEDIUM(0.3, "Medium", Color.DARKBLUE, 2),
+    RARE(0.15, "Rare", Color.DARKRED, 3),
+    VERY_RARE(0.05, "Very Rare", Color.MEDIUMPURPLE, 4);
 
     double rarity;
     String name;
     Color colour;
+    int multiplier;
 
-    ItemClass(double rarity, String name, Color colour){
+    ItemClass(double rarity, String name, Color colour, int multiplier){
         this.rarity = rarity;
         this.name = name;
         this.colour = colour;
+        this.multiplier = multiplier;
     }
 
     public double getRarity() {
@@ -29,5 +31,14 @@ public enum ItemClass {
 
     public Color getColour() {
         return colour;
+    }
+
+    public int getMultiplier() {
+        return multiplier;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }
