@@ -36,17 +36,6 @@ public class Map {
         tileList.add(new Tile(location, tileType));
     }
 
-    public void drawMap(GameWindow window){
-        for (Tile t : tileList){
-            JPanel p = new JPanel();
-            p.setBackground(t.getType().getColour());
-            p.setSize(t.getSquare().width, t.getSquare().height);
-            p.setLocation(t.getTileLocation().getX(), t.getTileLocation().getY());
-            window.add(p);
-            System.out.println(t);
-        }
-    }
-
     public void dumpMap() {
         for(Tile tile : tileList){
             System.out.print(tile.getType().getIcon());
@@ -56,5 +45,9 @@ public class Map {
         }
         System.out.println(Constants.maxX);
         System.out.println(Constants.maxY);
+    }
+
+    public List<Tile> getTileList() {
+        return tileList;
     }
 }

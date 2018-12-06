@@ -4,6 +4,8 @@ import engine.Constants;
 import engine.renderer.TileType;
 import engine.shapes.Square;
 
+import java.awt.*;
+
 public class Tile{
 
     private UUID uuid;
@@ -16,6 +18,17 @@ public class Tile{
         this.location = location;
         this.type = type;
         this.square = new Square(Constants.TILE_SIZE, Constants.TILE_SIZE, location.getX(), location.getY());
+    }
+
+    public void drawTile(Graphics g){
+        Graphics2D graphics2D = (Graphics2D) g;
+
+        graphics2D.setColor(type.getColour());
+        graphics2D.setBackground(type.getColour());
+        int offsetX = (location.getX() * Constants.TILE_SIZE) + 5;
+        int offsetY = (location.getY() * Constants.TILE_SIZE) + 5;
+
+        graphics2D.fillRect(offsetX, offsetY, Constants.TILE_SIZE, Constants.TILE_SIZE);
     }
 
     public UUID getId() {
