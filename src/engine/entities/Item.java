@@ -17,12 +17,14 @@ public class Item extends Entity {
     public Item(String name, ItemType itemType){
         super(name);
         this.itemType = itemType;
+        this.itemClass = ItemClass.NORMAL;
     }
 
     public Item(String name, ItemType itemType, int itemWorth){
         super(name);
         this.itemType = itemType;
         this.itemWorth = itemWorth;
+        this.itemClass = ItemClass.NORMAL;
     }
 
     public Item(String name, ItemType itemType, int itemWorth, double itemModifier){
@@ -30,6 +32,7 @@ public class Item extends Entity {
         this.itemType = itemType;
         this.itemWorth = itemWorth;
         this.itemModifier = itemModifier;
+        this.itemClass = ItemClass.NORMAL;
     }
 
     public Item(String name, ItemType itemType, int itemWorth, double itemModifier, int[] extraStats){
@@ -38,6 +41,7 @@ public class Item extends Entity {
         this.itemWorth = itemWorth;
         this.itemModifier = itemModifier;
         this.extraStats = extraStats;
+        this.itemClass = ItemClass.NORMAL;
     }
 
     public Item(String name, ItemType itemType, ItemClass itemClass){

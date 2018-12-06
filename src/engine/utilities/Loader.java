@@ -16,7 +16,7 @@ import java.io.IOException;
 public class Loader {
 
     public static void loadEntities(){
-        File file = new File("C:\\Users\\isair\\IdeaProjects\\CE203\\entities.conf");
+        File file = new File("entities.conf");
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
