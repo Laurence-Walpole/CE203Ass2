@@ -1,10 +1,8 @@
 package engine.utilities;
 
 import engine.Constants;
-import engine.Entity;
 import engine.entities.Equipment;
 import engine.entities.Item;
-import engine.entities.NPC;
 import engine.items.EquipmentType;
 import engine.items.ItemType;
 
@@ -25,10 +23,38 @@ public class Loader {
             while((line = reader.readLine()) != null){
                 if (!line.startsWith("#")) handleInput(line.split(","));
             }
-
+            reader.close();
         }catch(IOException e){
-            System.err.println(e);
+            System.err.println(e.getMessage());
         }
+    }
+
+
+    public static void loadMap(){
+        File file = new File("Map.csv");
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String line = "";
+            int currentRow = 0;
+            while((line = reader.readLine()) != null){
+                doMapLine(line.split(","), currentRow++);
+            }
+            Constants.maxY = currentRow;
+        }
+        catch (IOException e){
+            System.err.println(e.getMessage());
+        }
+        Constants.GAME_MAP.dumpMap();
+    }
+
+    private static void doMapLine(String[] tiles, int currentRow){
+        int currentColumn = 0;
+        for(String tile : tiles){
+            Location l = new Location(currentColumn++, currentRow);
+            Constants.GAME_MAP.addTile(l, tile);
+        }
+        Constants.maxX = currentColumn;
     }
 
     private static void handleInput(String[] components){
@@ -66,10 +92,6 @@ public class Loader {
         }
         if (e.getClass() == Item.class || e.getClass() == Equipment.class) Constants.ITEM_LIST.add(e);
         else Constants.ENTITY_LIST.add(e);
-    }
-
-    public static void loadMap(){
-
     }
 
 }

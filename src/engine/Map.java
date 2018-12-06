@@ -4,6 +4,7 @@ import engine.renderer.TileType;
 import engine.utilities.Location;
 import engine.utilities.Tile;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,21 +27,34 @@ public class Map {
                 break;
             case "C":
                 tileType = TileType.CHEST;
+                break;
+            default:
+                tileType = TileType.NULL;
+                break;
 
         }
-        if (icon.equals(TileType.WALL.getIcon())){
-            tileType = TileType.WALL;
-        }else if(icon.equals(TileType.FLOOR.getIcon())){
-            tileType = TileType.FLOOR;
-        }else if(icon.equals(TileType.DOOR.getIcon())){
-            tileType = TileType.DOOR;
-        }else if(icon.equals(TileType.CHEST.getIcon())){
-            tileType = TileType.CHEST;
-        }else{
-            tileType = null;
-        }
-        Tile t = new Tile(location, tileType);
+        tileList.add(new Tile(location, tileType));
     }
 
+    public void drawMap(GameWindow window){
+        for (Tile t : tileList){
+            JPanel p = new JPanel();
+            p.setBackground(t.getType().getColour());
+            p.setSize(t.getSquare().width, t.getSquare().height);
+            p.setLocation(t.getTileLocation().getX(), t.getTileLocation().getY());
+            window.add(p);
+            System.out.println(t);
+        }
+    }
 
+    public void dumpMap() {
+        for(Tile tile : tileList){
+            System.out.print(tile.getType().getIcon());
+            if (tile.getTileLocation().getX() == Constants.maxX-1){
+                System.out.println();
+            }
+        }
+        System.out.println(Constants.maxX);
+        System.out.println(Constants.maxY);
+    }
 }

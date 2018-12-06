@@ -12,4 +12,9 @@ public class Constants {
     public static List<Entity> ENTITY_LIST = new ArrayList<>();
     public static List<Item> ITEM_LIST = new ArrayList<>();
 
+    public static Map GAME_MAP = new Map();
+    public static int maxX = 0, maxY = 0;
+
+    public static final int TILE_SIZE = 20;
+
 }

@@ -7,7 +7,8 @@ public enum TileType {
     WALL("Wall", "W" , false, Color.DARK_GRAY),
     FLOOR("Floor", "F", true, Color.LIGHT_GRAY),
     DOOR("Door", "D", true, Color.getHSBColor(28, 90, 23)),
-    CHEST("Chest", "C", true, Color.ORANGE);
+    CHEST("Chest", "C", true, Color.ORANGE),
+    NULL("Null", "N", true, Color.pink);
 
     String name, icon;
     boolean walkable;

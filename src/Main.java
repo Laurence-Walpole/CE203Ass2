@@ -1,13 +1,8 @@
-import engine.Constants;
-import engine.entities.Item;
-import engine.utilities.Loader;
+import engine.GameWindow;
 
 public class Main {
 
     public static void main(String[] args) {
-        Loader.loadEntities();
-        for(Item i : Constants.ITEM_LIST){
-            System.out.println(i);
-        }
+        new GameWindow();
     }
 }
