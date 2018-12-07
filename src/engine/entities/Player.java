@@ -5,6 +5,8 @@ import engine.Skills;
 import engine.items.Container;
 import engine.utilities.Location;
 
+import java.awt.*;
+
 public class Player extends Entity {
 
     private Container inventory;
@@ -17,6 +19,8 @@ public class Player extends Entity {
 
     public Player(String name, Location location){
         super(name, location);
+        setTag(name);
+        setColour(Color.BLACK);
         this.inventory = new Container("player-inv");
     }
 

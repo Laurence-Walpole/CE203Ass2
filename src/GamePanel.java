@@ -14,6 +14,7 @@ public class GamePanel extends JPanel {
         for (Entity entity : Constants.ENTITIES_IN_GAME){
             entity.drawEntity(graphics);
         }
+        Constants.PLAYER.drawEntity(graphics);
     }
 
     public void gameLoop(){
@@ -21,7 +22,7 @@ public class GamePanel extends JPanel {
             tick();
             repaint();
             try {
-                Thread.sleep(200);
+                Thread.sleep(300);
             }catch(Exception e){
 
             }

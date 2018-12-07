@@ -3,6 +3,7 @@ import engine.Entity;
 import engine.Game;
 import engine.entities.NPC;
 import engine.utilities.Loader;
+import engine.utilities.PlayerKeyListener;
 import engine.utilities.Tile;
 
 import javax.swing.*;
@@ -24,6 +25,7 @@ public class GameWindow extends JFrame {
         setSize(Constants.WINDOW_SIZE + 21, Constants.WINDOW_SIZE + 44);
         setBackground(Color.GRAY);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new PlayerKeyListener());
         setVisible(true);
     }
 

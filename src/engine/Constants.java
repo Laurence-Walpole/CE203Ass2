@@ -1,7 +1,9 @@
 package engine;
 
 import engine.entities.Item;
+import engine.entities.Player;
 import engine.items.Container;
+import engine.utilities.Location;
 import engine.utilities.UUID;
 
 import java.util.ArrayList;
@@ -27,6 +29,6 @@ public class Constants {
             {0, -1}, {-1, 0}
     };
 
-    public static boolean GAME_RUNNING = false;
+    public static Player PLAYER = new Player("Dave", new Location(1, 1));
 
 }
