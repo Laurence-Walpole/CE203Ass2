@@ -1,6 +1,9 @@
 package engine.utilities;
 
+import engine.Constants;
+import engine.Entity;
 import engine.entities.Item;
+import engine.items.Container;
 import engine.items.ItemClass;
 
 import java.util.Random;
@@ -24,6 +27,21 @@ public class RNG {
         }else{
             return ItemClass.VERY_RARE;
         }
+    }
+
+    public static Container generatePopulatedContainer(String containerName, int itemCount){
+        Container container = new Container(containerName);
+        for (int i = 0; i < itemCount; i++){
+            Item item = getRandomItem();
+            System.out.println(item);
+            container.addItem(item, randomNumberBetween(1,3));
+        }
+        return container;
+    }
+
+    public static Item getRandomItem(){
+        Item e = Constants.ITEM_LIST.get(randomNumberBetween(0, Constants.ITEM_LIST.size()));
+        return generateItemRarity(e);
     }
 
     public static int randomNumberBetween(int low, int high){

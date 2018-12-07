@@ -46,8 +46,9 @@ public class PlayerKeyListener implements KeyListener {
 
             case KeyEvent.VK_SPACE:
                 if (Constants.PLAYER.isPlayerOnChest()){
-                    Constants.PLAYER.setColour(Color.RED);
+                    Constants.PLAYER.getInventory().addItems(RNG.generatePopulatedContainer("Chest Loot", 3));
                 }
+                System.out.println(Constants.PLAYER.getInventory());
         }
     }
 }

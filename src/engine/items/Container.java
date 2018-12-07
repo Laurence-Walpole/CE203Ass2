@@ -2,9 +2,11 @@ package engine.items;
 
 import engine.Constants;
 import engine.Entity;
+import engine.entities.Item;
 import engine.utilities.UUID;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Container {
 
@@ -45,7 +47,22 @@ public class Container {
         getInventory().put(item, amount);
     }
 
+    public void addItems(Container container){
+        for(Map.Entry<Entity, Integer> item: container.getInventory().entrySet()){
+            getInventory().put(item.getKey(), item.getValue());
+        }
+    }
+
     public void removeItem(Entity item){
         getInventory().remove(item);
+    }
+
+    @Override
+    public String toString() {
+        String inventory = "";
+        for(Map.Entry<Entity, Integer> item: getInventory().entrySet()){
+            inventory += String.format("Item: %s, Amount: %d \n", item.getKey().getName(), item.getValue());
+        }
+        return inventory;
     }
 }
