@@ -1,9 +1,12 @@
 package engine.entities;
 
+import engine.Constants;
 import engine.Entity;
 import engine.Skills;
 import engine.items.Container;
+import engine.renderer.TileType;
 import engine.utilities.Location;
+import engine.utilities.Tile;
 
 import java.awt.*;
 
@@ -22,6 +25,16 @@ public class Player extends Entity {
         setTag(name);
         setColour(Color.BLACK);
         this.inventory = new Container("player-inv");
+    }
+
+    public boolean isPlayerOnChest(){
+        for(Tile tile : Constants.GAME_MAP.getTileList()){
+            if (tile.getType() == TileType.CHEST){
+                return tile.getTileLocation().getX() == getLocation().getX() &&
+                        tile.getTileLocation().getY() == getLocation().getY();
+            }
+        }
+        return false;
     }
 
     public Container getInventory() {
