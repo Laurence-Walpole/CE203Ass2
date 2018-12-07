@@ -1,5 +1,7 @@
 package engine;
 
+import engine.entities.NPC;
+import engine.entities.NPCType;
 import engine.renderer.TileType;
 import engine.utilities.Location;
 import engine.utilities.Tile;
@@ -31,7 +33,8 @@ public class Map {
                 tileType = TileType.FLOOR;
                 break;
             default:
-                tileType = TileType.NULL;
+                tileType = TileType.FLOOR;
+                Constants.ENTITIES_IN_GAME.add(new NPC(location, icon));
                 break;
         }
         tileList.add(new Tile(location, tileType));
@@ -46,6 +49,24 @@ public class Map {
         }
         System.out.println(Constants.maxX);
         System.out.println(Constants.maxY);
+    }
+
+    public boolean isTileAccessible(Location location){
+        for(Tile tile : getTileList()){
+            if (tile.getTileLocation().getX() == location.getX() && tile.getTileLocation().getY() == location.getY()){
+                return tile.getType().isWalkable();
+            }
+        }
+        return false;
+    }
+
+    public boolean isTileNPCAccessible(Location location){
+        for(Tile tile : getTileList()){
+            if (tile.getTileLocation().getX() == location.getX() && tile.getTileLocation().getY() == location.getY()){
+                return tile.getType().isNpcWalkable();
+            }
+        }
+        return false;
     }
 
     public List<Tile> getTileList() {

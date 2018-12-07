@@ -8,6 +8,7 @@ import engine.entities.NPC;
 import engine.items.EquipmentType;
 import engine.items.ItemType;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -69,7 +70,7 @@ public class Loader {
             String name = components[2];
             int shopID = Integer.valueOf(components[3]);
             entity = new NPC(name, new Location(5,5), type, tag, shopID);
-
+            entity.setColour(new Color(66, 134, 244));
         }else if(type.equals("CNPC")){
             //#TYPE,TAG,NAME,ATK,DEF,HP,DROP_TABLE
             String tag = components[1];
@@ -79,6 +80,11 @@ public class Loader {
             int h = Integer.valueOf(components[5]);
             int dr = Integer.valueOf(components[6]);
             entity = new NPC(name, new Location(0,0), type, tag, a, d, h, dr);
+            if (tag.equals("B")) {
+                entity.setColour(new Color(135, 1, 1));
+            }else{
+                entity.setColour(new Color(255, 39, 39));
+            }
         }else {
             String name = components[1];
             int attack = Integer.valueOf(components[2]);

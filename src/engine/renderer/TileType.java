@@ -4,20 +4,21 @@ import java.awt.*;
 
 public enum TileType {
 
-    WALL("Wall", "W" , false, Color.DARK_GRAY),
-    FLOOR("Floor", "F", true, Color.LIGHT_GRAY),
-    DOOR("Door", "D", true, new Color(86, 59, 24)),
-    CHEST("Chest", "C", true, Color.ORANGE),
-    NULL("Null", "N", true, new Color(255, 0, 242));
+    WALL("Wall", "W" , false, false, Color.DARK_GRAY),
+    FLOOR("Floor", "F", true, true, Color.LIGHT_GRAY),
+    DOOR("Door", "D", true, false, new Color(86, 59, 24)),
+    CHEST("Chest", "C", true, false, Color.ORANGE),
+    NULL("Null", "N", true, true, new Color(255, 0, 242));
 
     String name, icon;
-    boolean walkable;
+    boolean walkable, npcWalkable;
     Color colour;
 
-    TileType(String name, String icon, boolean walkable, Color colour){
+    TileType(String name, String icon, boolean walkable, boolean npcWalkable, Color colour){
         this.name = name;
         this.icon = icon;
         this.walkable = walkable;
+        this.npcWalkable = npcWalkable;
         this.colour = colour;
     }
 
@@ -35,6 +36,10 @@ public enum TileType {
 
     public boolean isWalkable() {
         return walkable;
+    }
+
+    public boolean isNpcWalkable() {
+        return npcWalkable;
     }
 
     @Override

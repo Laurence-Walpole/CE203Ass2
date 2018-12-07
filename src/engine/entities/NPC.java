@@ -4,34 +4,50 @@ import engine.Constants;
 import engine.Entity;
 import engine.utilities.Location;
 
+import java.awt.*;
+
 public class NPC extends Entity {
 
     private NPCType type;
-    private String tag;
     private int attack = 0, defence = 0, hitpoints = 0, dropTable = -1;
 
     public NPC(){
         super();
     }
 
+    public NPC(Location location, String tag){
+        super();
+        this.setLocation(location);
+        this.setTag(tag);
+        NPC n = isTagInNPCList(tag);
+        if (n != null){
+            this.type = n.type;
+            this.attack = n.attack;
+            this.defence = n.defence;
+            this.hitpoints = n.hitpoints;
+            this.dropTable = n.dropTable;
+            this.setColour(n.getColour());
+        }
+    }
+
     public NPC(String type, String tag, int dropTable){
         super();
         this.type = NPCType.getType(type);
-        this.tag = tag;
+        this.setTag(tag);
         this.dropTable = dropTable;
     }
 
     public NPC(String name, Location location, String type, String tag, int dropTable){
         super(name, location);
         this.type = NPCType.getType(type);
-        this.tag = tag;
+        this.setTag(tag);
         this.dropTable = dropTable;
     }
 
     public NPC(String name, Location location, String type, String tag, int dropTable, int attack, int defence, int hitpoints){
         super(name, location);
         this.type = NPCType.getType(type);
-        this.tag = tag;
+        this.setTag(tag);
         this.dropTable = dropTable;
         this.attack = attack;
         this.defence = defence;
@@ -40,10 +56,6 @@ public class NPC extends Entity {
 
     public NPCType getType() {
         return type;
-    }
-
-    public String getTag() {
-        return tag;
     }
 
     public int getAttack() {
@@ -62,10 +74,13 @@ public class NPC extends Entity {
         return dropTable;
     }
 
-    public static boolean isTagInNPCList(String tag){
+
+    public static NPC isTagInNPCList(String tag){
         for (Entity entity : Constants.ENTITY_LIST){
-            if (entity.getClass() == NPC.class) return ((NPC)entity).tag.equals(tag);
+            if (entity.getClass() == NPC.class && (entity).getTag().equals(tag)){
+                return (NPC)entity;
+            }
         }
-        return false;
+        return null;
     }
 }
