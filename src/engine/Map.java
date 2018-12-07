@@ -4,7 +4,6 @@ import engine.renderer.TileType;
 import engine.utilities.Location;
 import engine.utilities.Tile;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +27,12 @@ public class Map {
             case "C":
                 tileType = TileType.CHEST;
                 break;
+            case "I":
+                tileType = TileType.FLOOR;
+                break;
             default:
                 tileType = TileType.NULL;
                 break;
-
         }
         tileList.add(new Tile(location, tileType));
     }

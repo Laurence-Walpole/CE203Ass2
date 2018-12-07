@@ -4,6 +4,8 @@ import engine.shapes.Shape;
 import engine.utilities.Location;
 import engine.utilities.UUID;
 
+import java.awt.*;
+
 public class Entity {
 
     private UUID id;
@@ -54,6 +56,17 @@ public class Entity {
 
     public void updateLocation(int x, int y){
         this.location.setLocation(new Location(x, y));
+    }
+
+    public void drawEntity(Graphics g){
+        Graphics2D graphics2D = (Graphics2D) g;
+
+        graphics2D.setColor(Color.CYAN);
+        graphics2D.setBackground(Color.CYAN);
+        int offsetX = (location.getX() * Constants.TILE_SIZE) + 5;
+        int offsetY = (location.getY() * Constants.TILE_SIZE) + 5;
+
+        graphics2D.fillOval(offsetX, offsetY, Constants.TILE_SIZE, Constants.TILE_SIZE);
     }
 
     @Override

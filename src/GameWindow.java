@@ -1,4 +1,5 @@
 import engine.Constants;
+import engine.Entity;
 import engine.utilities.Loader;
 import engine.utilities.Tile;
 
@@ -21,6 +22,10 @@ public class GameWindow extends JComponent {
     public void paintComponent(Graphics graphics){
         for (Tile tile : Constants.GAME_MAP.getTileList()){
             tile.drawTile(graphics);
+        }
+
+        for (Entity entity : Constants.ENTITY_LIST){
+            entity.drawEntity(graphics);
         }
     }
 

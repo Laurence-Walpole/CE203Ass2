@@ -1,5 +1,6 @@
 package engine.items;
 
+import engine.Constants;
 import engine.Entity;
 import engine.utilities.UUID;
 
@@ -18,12 +19,14 @@ public class Container {
     public Container(String name){
         this.id = new UUID();
         this.name = name;
+        Constants.CONTAINERS.add(this);
     }
 
     public Container(String name, HashMap<Entity, Integer> inventory){
         this.id = new UUID();
         this.name = name;
         this.inventory = inventory;
+        Constants.CONTAINERS.add(this);
     }
 
     public UUID getId() {
