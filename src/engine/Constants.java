@@ -3,6 +3,8 @@ package engine;
 import engine.entities.Item;
 import engine.entities.Player;
 import engine.items.Container;
+import engine.renderer.GamePanel;
+import engine.renderer.InventoryPanel;
 import engine.utilities.Location;
 import engine.utilities.UUID;
 
@@ -20,7 +22,7 @@ public class Constants {
     public static Map GAME_MAP = new Map();
     public static int maxX = 0, maxY = 0;
 
-    public static final int TILE_SIZE = 40;
+    public static final int TILE_SIZE = 25;
 
     public static final int WINDOW_SIZE = (TILE_SIZE * 20) + 5;
 
@@ -30,5 +32,8 @@ public class Constants {
     };
 
     public static Player PLAYER = new Player("Dave", new Location(1, 1));
+
+    public static GamePanel gamePanel = new GamePanel();
+    public static InventoryPanel inventoryPanel = new InventoryPanel();
 
 }

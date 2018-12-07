@@ -4,10 +4,10 @@ import javafx.scene.paint.Color;
 
 public enum ItemClass {
 
-    NORMAL(0.5, "Normal", Color.LIGHTBLUE, 0),
-    MEDIUM(0.3, "Medium", Color.DARKBLUE, 2),
-    RARE(0.15, "Rare", Color.DARKRED, 3),
-    VERY_RARE(0.05, "Very Rare", Color.MEDIUMPURPLE, 4);
+    NORMAL(0.525, "Normal", Color.LIGHTBLUE, 0),
+    MEDIUM(0.35, "Medium", Color.DARKBLUE, 2),
+    RARE(0.1, "Rare", Color.DARKRED, 3),
+    VERY_RARE(0.025, "Very Rare", Color.MEDIUMPURPLE, 4);
 
     double rarity;
     String name;

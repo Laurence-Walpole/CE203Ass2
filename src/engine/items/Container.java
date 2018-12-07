@@ -44,6 +44,14 @@ public class Container {
     }
 
     public void addItem(Entity item, int amount){
+        for(Map.Entry<Entity, Integer> invItem : getInventory().entrySet()){
+            if (invItem.getKey().getName().equals(item.getName())){
+                if (((Item)invItem.getKey()).getItemClass() == ((Item)item).getItemClass()){
+                    invItem.setValue(invItem.getValue() + amount);
+                    return;
+                }
+            }
+        }
         getInventory().put(item, amount);
     }
 
@@ -57,11 +65,15 @@ public class Container {
         getInventory().remove(item);
     }
 
+    public void drawContainer(){
+
+    }
+
     @Override
     public String toString() {
         String inventory = "";
         for(Map.Entry<Entity, Integer> item: getInventory().entrySet()){
-            inventory += String.format("Item: %s, Amount: %d \n", item.getKey().getName(), item.getValue());
+            inventory += String.format("Item: %s %s, Amount: %d \n", ((Item)item.getKey()).getItemClass(), item.getKey().getName(), item.getValue());
         }
         return inventory;
     }

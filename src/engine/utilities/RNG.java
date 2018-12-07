@@ -33,8 +33,12 @@ public class RNG {
         Container container = new Container(containerName);
         for (int i = 0; i < itemCount; i++){
             Item item = getRandomItem();
-            System.out.println(item);
-            container.addItem(item, randomNumberBetween(1,3));
+            int maxAmount;
+            if (item.getItemClass() == ItemClass.NORMAL) maxAmount = 4;
+            else if (item.getItemClass() == ItemClass.MEDIUM) maxAmount = 3;
+            else maxAmount = 2;
+            System.out.println(maxAmount);
+            container.addItem(item, randomNumberBetween(1,maxAmount));
         }
         return container;
     }

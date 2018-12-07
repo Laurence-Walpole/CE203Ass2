@@ -48,7 +48,9 @@ public class PlayerKeyListener implements KeyListener {
                 if (Constants.PLAYER.isPlayerOnChest()){
                     Constants.PLAYER.getInventory().addItems(RNG.generatePopulatedContainer("Chest Loot", 3));
                 }
+                System.out.println(Constants.PLAYER.getInventory().getName() + " Inventory:");
                 System.out.println(Constants.PLAYER.getInventory());
+                break;
         }
     }
 }

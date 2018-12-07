@@ -24,14 +24,16 @@ public class Player extends Entity {
         super(name, location);
         setTag(name);
         setColour(Color.BLACK);
-        this.inventory = new Container("player-inv");
+        this.inventory = new Container("Player");
     }
 
     public boolean isPlayerOnChest(){
         for(Tile tile : Constants.GAME_MAP.getTileList()){
             if (tile.getType() == TileType.CHEST){
-                return tile.getTileLocation().getX() == getLocation().getX() &&
-                        tile.getTileLocation().getY() == getLocation().getY();
+                if (tile.getTileLocation().getX() == getLocation().getX() &&
+                        tile.getTileLocation().getY() == getLocation().getY()){
+                    return true;
+                }
             }
         }
         return false;
