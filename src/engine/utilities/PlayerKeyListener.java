@@ -50,6 +50,7 @@ public class PlayerKeyListener implements KeyListener {
                 }
                 System.out.println(Constants.PLAYER.getInventory().getName() + " Inventory:");
                 System.out.println(Constants.PLAYER.getInventory());
+                Constants.inventoryPanel.repaint();
                 break;
         }
     }

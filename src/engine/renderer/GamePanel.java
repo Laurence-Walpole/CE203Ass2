@@ -1,5 +1,6 @@
 package engine.renderer;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import engine.Constants;
 import engine.Entity;
 import engine.utilities.Tile;
@@ -17,7 +18,6 @@ public class GamePanel extends JPanel {
             entity.drawEntity(graphics);
         }
         Constants.PLAYER.drawEntity(graphics);
-        Constants.inventoryPanel.repaint();
     }
 
     public void gameLoop(){

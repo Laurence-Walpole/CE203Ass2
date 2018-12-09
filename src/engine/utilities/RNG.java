@@ -34,10 +34,9 @@ public class RNG {
         for (int i = 0; i < itemCount; i++){
             Item item = getRandomItem();
             int maxAmount;
-            if (item.getItemClass() == ItemClass.NORMAL) maxAmount = 4;
-            else if (item.getItemClass() == ItemClass.MEDIUM) maxAmount = 3;
+            if (item.getItemClass() == ItemClass.NORMAL) maxAmount = 3;
+            else if (item.getItemClass() == ItemClass.MEDIUM) maxAmount = 2;
             else maxAmount = 2;
-            System.out.println(maxAmount);
             container.addItem(item, randomNumberBetween(1,maxAmount));
         }
         return container;

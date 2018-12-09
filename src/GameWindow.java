@@ -12,18 +12,17 @@ public class GameWindow extends JFrame {
     public static void main(String[] args){
         init();
 
-        gw.setLayout(null);
-
         Constants.gamePanel.gameLoop();
     }
 
     private GameWindow(){
         setTitle("CE203 Assignment | 1604065");
-        setSize(Constants.WINDOW_SIZE + 12, Constants.WINDOW_SIZE + 44 + 170);
+        setSize(Constants.WINDOW_SIZE + 12, Constants.WINDOW_SIZE + 34 + 170);
         setBackground(Color.GRAY);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         addKeyListener(new PlayerKeyListener());
-        //setResizable(false);
+        setResizable(false);
+        setLayout(null);
         setVisible(true);
     }
 
@@ -32,8 +31,7 @@ public class GameWindow extends JFrame {
         Loader.loadMap();
 
         Constants.gamePanel.setBounds(0, 0, Constants.WINDOW_SIZE, Constants.WINDOW_SIZE);
-        Constants.inventoryPanel.setBounds(Constants.WINDOW_SIZE, Constants.WINDOW_SIZE -170 , Constants.WINDOW_SIZE, 170);
-        Constants.inventoryPanel.setBackground(Color.BLUE);
+        Constants.inventoryPanel.setBounds(0, Constants.WINDOW_SIZE, Constants.WINDOW_SIZE, 170);
         gw.add(Constants.gamePanel);
         gw.add(Constants.inventoryPanel);
     }
