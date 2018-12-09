@@ -11,7 +11,7 @@ public class GameWindow extends JFrame {
     static GameWindow gw = new GameWindow();
     public static void main(String[] args){
         init();
-
+        Constants.inventoryPanel.repaint();
         Constants.gamePanel.gameLoop();
     }
 

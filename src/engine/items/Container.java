@@ -65,6 +65,18 @@ public class Container {
         getContainer().remove(item);
     }
 
+    public int findLongestString(){
+        int maxDist = 0;
+        for (Map.Entry item : getContainer().entrySet()) {
+            String invString = ((Item) item.getKey()).getInventoryText() + " x" + item.getValue();
+            int howFar = invString.length() * 8;
+            if (howFar > maxDist) {
+                maxDist = howFar;
+            }
+        }
+        return maxDist;
+    }
+
     @Override
     public String toString() {
         String inventory = "";

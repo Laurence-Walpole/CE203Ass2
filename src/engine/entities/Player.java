@@ -14,7 +14,7 @@ import java.util.Map;
 public class Player extends Entity {
 
     private Container inventory;
-    private int[] xpInSkills = new int[] {0, 0, 0};
+    private int[] xpInSkills = new int[] {0, 0, 1154};
 
     public Player(){
         super();
@@ -58,5 +58,31 @@ public class Player extends Entity {
 
     public void addXpInSkill(Skills skill, int xp){
         xpInSkills[skill.getId()] += xp;
+    }
+
+    public int calculateLevel(Skills skill){
+        int currentXP = getXpInSkill(skill);
+        return getLevelAtExperience(currentXP);
+    }
+
+    private int getExperienceAtLevel(int level){
+        double total = 0;
+        for (int i = 1; i < level; i++)
+        {
+            total += Math.floor(i + 300 * Math.pow(2, i / 7.0));
+        }
+
+        return (int) Math.floor(total / 4);
+    }
+
+    private int getLevelAtExperience(int experience) {
+        int index;
+
+        for (index = 0; index < 120; index++) {
+            if (getExperienceAtLevel(index + 1) > experience)
+                break;
+        }
+
+        return index;
     }
 }
