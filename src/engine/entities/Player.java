@@ -4,12 +4,17 @@ import engine.Constants;
 import engine.Entity;
 import engine.Skills;
 import engine.items.Container;
+import engine.items.ItemType;
 import engine.renderer.TileType;
+import engine.utilities.InventoryButtonAction;
 import engine.utilities.Location;
 import engine.utilities.Tile;
 
 import java.awt.*;
 import java.util.Map;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Player extends Entity {
 
@@ -61,28 +66,42 @@ public class Player extends Entity {
     }
 
     public int calculateLevel(Skills skill){
-        int currentXP = getXpInSkill(skill);
-        return getLevelAtExperience(currentXP);
+        return getLevelAtExperience(getXpInSkill(skill));
+    }
+
+    public void useItem(Item itemToUse, InventoryButtonAction buttonAction){
+        if (buttonAction == InventoryButtonAction.DROP){
+            getInventory().removeItem(itemToUse);
+        } else if (buttonAction == InventoryButtonAction.USE){
+            if (itemToUse.getItemType() == ItemType.CONSUMABLE){
+                int attackXP = calculateXpToGain(itemToUse, 0);
+                int defenceXP = calculateXpToGain(itemToUse, 1);
+                int hpXP = addHPXP(itemToUse);
+
+                addXpInSkill(Skills.ATTACK, attackXP);
+                addXpInSkill(Skills.DEFENCE, defenceXP);
+                addXpInSkill(Skills.HITPOINTS, hpXP);
+                getInventory().removeItem(itemToUse);
+            }
+        }
+
+        Constants.inventoryPanel.repaint();
     }
 
     private int getExperienceAtLevel(int level){
-        double total = 0;
-        for (int i = 1; i < level; i++)
-        {
-            total += Math.floor(i + 300 * Math.pow(2, i / 7.0));
-        }
-
-        return (int) Math.floor(total / 4);
+        return (int)Math.floor(IntStream.range(1, level).mapToDouble(i -> Math.floor(i + 300 * Math.pow(2, i / 7.0))).sum() / 4);
     }
 
+
     private int getLevelAtExperience(int experience) {
-        int index;
+        return (IntStream.rangeClosed(0, 99).filter(i -> getExperienceAtLevel(i + 1) > experience).findFirst()).orElse(0);
+    }
 
-        for (index = 0; index < 120; index++) {
-            if (getExperienceAtLevel(index + 1) > experience)
-                break;
-        }
+    private int calculateXpToGain(Item itemToUse, int statToGain){
+        return itemToUse.getExtraStats()[statToGain] * itemToUse.getItemClass().getMultiplier() * 100;
+    }
 
-        return index;
+    private int addHPXP(Item itemToUse){
+        return (int)itemToUse.getItemModifier() * itemToUse.getItemClass().getMultiplier() * 50;
     }
 }

@@ -6,13 +6,17 @@ import engine.Skills;
 import engine.entities.Item;
 import engine.items.ItemType;
 import engine.utilities.InventoryButtonAction;
-import engine.utilities.InventoryMouseListener;
+import engine.utilities.Location;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class InventoryPanel extends JPanel {
+
+    public static List<InventoryButton> inventoryButtons = new ArrayList<>();
 
     @Override
     public void paintComponent(Graphics graphics){
@@ -40,8 +44,8 @@ public class InventoryPanel extends JPanel {
             if (((Item)item.getKey()).getItemType() == ItemType.EQUIPMENT) buttonAction = InventoryButtonAction.EQUIP;
             else buttonAction = InventoryButtonAction.USE;
 
-            InventoryButton btn1 = generateButton(buttonAction);
-            InventoryButton btn2 = generateButton(InventoryButtonAction.DROP);
+            InventoryButton btn1 = generateButton(buttonAction, new Location(maxDist, y), (Item)item.getKey());
+            InventoryButton btn2 = generateButton(InventoryButtonAction.DROP, new Location(maxDist + 40, y), (Item)item.getKey());
             graphics2D.drawString(btn1.getButtonLabel(), maxDist, y);
             graphics2D.drawString(btn2.getButtonLabel(), maxDist + 40, y);
         }
@@ -55,9 +59,9 @@ public class InventoryPanel extends JPanel {
 
     }
 
-    private static InventoryButton generateButton(InventoryButtonAction type){
-        InventoryButton button = new InventoryButton(type);
-        button.setButtonActionListener(new InventoryMouseListener());
+    private static InventoryButton generateButton(InventoryButtonAction type, Location location, Item item){
+        InventoryButton button = new InventoryButton(type, location, item);
+        inventoryButtons.add(button);
         return button;
     }
 

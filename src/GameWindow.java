@@ -1,6 +1,7 @@
 import engine.Constants;
 import engine.renderer.GamePanel;
 import engine.renderer.InventoryPanel;
+import engine.utilities.InventoryMouseListener;
 import engine.utilities.Loader;
 import engine.utilities.PlayerKeyListener;
 
@@ -21,6 +22,7 @@ public class GameWindow extends JFrame {
         setBackground(Color.GRAY);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         addKeyListener(new PlayerKeyListener());
+        addMouseListener(new InventoryMouseListener());
         setResizable(false);
         setLayout(null);
         setVisible(true);

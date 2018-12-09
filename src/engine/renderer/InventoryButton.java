@@ -1,29 +1,36 @@
 package engine.renderer;
 
+import engine.entities.Item;
 import engine.utilities.InventoryButtonAction;
-import engine.utilities.InventoryMouseListener;
+import engine.utilities.Location;
 
 public class InventoryButton {
 
     private String buttonLabel;
     private InventoryButtonAction buttonAction;
-    private InventoryMouseListener buttonActionListener;
+    private Location buttonLocation;
+    private Item relatedItem;
 
-    public InventoryButton(InventoryButtonAction buttonAction) {
+    public InventoryButton(InventoryButtonAction buttonAction, Location buttonLocation, Item relatedItem) {
         this.buttonAction = buttonAction;
         this.buttonLabel = buttonAction.getLabel();
+        this.buttonLocation = buttonLocation;
+        this.relatedItem = relatedItem;
     }
-
-    public void setButtonActionListener(InventoryMouseListener buttonActionListener) {
-        this.buttonActionListener = buttonActionListener;
-    }
-
     public InventoryButtonAction getButtonAction() {
         return buttonAction;
     }
 
+    public Location getButtonLocation() {
+        return buttonLocation;
+    }
+
     public String getButtonLabel() {
         return buttonLabel;
+    }
+
+    public Item getRelatedItem() {
+        return relatedItem;
     }
 
     @Override
