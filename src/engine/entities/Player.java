@@ -9,6 +9,7 @@ import engine.utilities.Location;
 import engine.utilities.Tile;
 
 import java.awt.*;
+import java.util.Map;
 
 public class Player extends Entity {
 
@@ -27,20 +28,24 @@ public class Player extends Entity {
         this.inventory = new Container("Player");
     }
 
-    public boolean isPlayerOnChest(){
+    public Tile isPlayerOnChest(){
         for(Tile tile : Constants.GAME_MAP.getTileList()){
             if (tile.getType() == TileType.CHEST){
                 if (tile.getTileLocation().getX() == getLocation().getX() &&
                         tile.getTileLocation().getY() == getLocation().getY()){
-                    return true;
+                    return tile;
                 }
             }
         }
-        return false;
+        return null;
     }
 
     public Container getInventory() {
         return inventory;
+    }
+
+    public Map<Entity, Integer> getItems(){
+        return getInventory().getContainer();
     }
 
     public int[] getXpInSkills() {

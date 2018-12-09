@@ -1,13 +1,13 @@
 package engine.items;
 
-import javafx.scene.paint.Color;
+import java.awt.*;
 
 public enum ItemClass {
 
-    NORMAL(0.525, "Normal", Color.LIGHTBLUE, 0),
-    MEDIUM(0.35, "Medium", Color.DARKBLUE, 2),
-    RARE(0.1, "Rare", Color.DARKRED, 3),
-    VERY_RARE(0.025, "Very Rare", Color.MEDIUMPURPLE, 4);
+    NORMAL(0.525, "Normal", new Color(153, 204, 255), 0),
+    MEDIUM(0.35, "Medium", new Color(51, 51, 255), 2),
+    RARE(0.1, "Rare", new Color(204, 0, 0), 3),
+    VERY_RARE(0.025, "Very Rare", new Color(204, 0, 255), 4);
 
     double rarity;
     String name;

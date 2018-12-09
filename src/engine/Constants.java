@@ -24,6 +24,9 @@ public class Constants {
 
     public static final int TILE_SIZE = 25;
 
+    public static final int MAX_FPS = 24;
+    public static final int MAX_UPS = 3;
+
     public static final int WINDOW_SIZE = (TILE_SIZE * 20) + 5;
 
     public static final int[][] MOVEMENT_OPTIONS = new int[][] {
@@ -31,7 +34,7 @@ public class Constants {
             {0, -1}, {-1, 0}
     };
 
-    public static Player PLAYER = new Player("Dave", new Location(1, 1));
+    public static Player PLAYER = new Player("Player", new Location(1, 1));
 
     public static GamePanel gamePanel = new GamePanel();
     public static InventoryPanel inventoryPanel = new InventoryPanel();

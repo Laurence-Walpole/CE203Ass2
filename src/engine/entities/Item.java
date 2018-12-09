@@ -90,4 +90,8 @@ public class Item extends Entity {
     public String toString() {
         return String.format("Name: %s %s, Item Type: %s, Item Worth: %d", getItemClass(), getName(), getItemType(), getItemWorth());
     }
+
+    public String getInventoryText(){
+        return String.format("%s %s", getItemClass(), getName());
+    }
 }

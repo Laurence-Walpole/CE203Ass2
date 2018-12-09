@@ -8,9 +8,7 @@ import java.awt.event.KeyListener;
 
 public class PlayerKeyListener implements KeyListener {
     @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
+    public void keyTyped(KeyEvent e) { }
 
     @Override
     public void keyPressed(KeyEvent e) { }
@@ -45,11 +43,13 @@ public class PlayerKeyListener implements KeyListener {
                 break;
 
             case KeyEvent.VK_SPACE:
-                if (Constants.PLAYER.isPlayerOnChest()){
-                    Constants.PLAYER.getInventory().addItems(RNG.generatePopulatedContainer("Chest Loot", 3));
+                Tile tile = Constants.PLAYER.isPlayerOnChest();
+                if (tile != null){
+                    if (Constants.PLAYER.getItems().size() < 10) {
+                        Constants.PLAYER.getInventory().addItems(RNG.generatePopulatedContainer("Chest Loot", 2));
+                        Constants.GAME_MAP.removeTile(tile);
+                    }
                 }
-                System.out.println(Constants.PLAYER.getInventory().getName() + " Inventory:");
-                System.out.println(Constants.PLAYER.getInventory());
                 Constants.inventoryPanel.repaint();
                 break;
         }

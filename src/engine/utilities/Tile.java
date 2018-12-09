@@ -21,14 +21,7 @@ public class Tile{
     }
 
     public void drawTile(Graphics g){
-        Graphics2D graphics2D = (Graphics2D) g;
-
-        graphics2D.setColor(type.getColour());
-        graphics2D.setBackground(type.getColour());
-        int offsetX = (location.getX() * Constants.TILE_SIZE) + 5;
-        int offsetY = (location.getY() * Constants.TILE_SIZE) + 5;
-
-        graphics2D.fillRect(offsetX, offsetY, Constants.TILE_SIZE, Constants.TILE_SIZE);
+        square.drawTile(g, type, location);
     }
 
     public UUID getId() {

@@ -40,17 +40,6 @@ public class Map {
         tileList.add(new Tile(location, tileType));
     }
 
-    public void dumpMap() {
-        for(Tile tile : tileList){
-            System.out.print(tile.getType().getIcon());
-            if (tile.getTileLocation().getX() == Constants.maxX-1){
-                System.out.println();
-            }
-        }
-        System.out.println(Constants.maxX);
-        System.out.println(Constants.maxY);
-    }
-
     public boolean isTileAccessible(Location location){
         for(Tile tile : getTileList()){
             if (tile.getTileLocation().getX() == location.getX() && tile.getTileLocation().getY() == location.getY()){
@@ -67,6 +56,11 @@ public class Map {
             }
         }
         return false;
+    }
+
+    public void removeTile(Tile tile){
+       getTileList().remove(tile);
+       addTile(tile.getTileLocation(), "F");
     }
 
     public List<Tile> getTileList() {
