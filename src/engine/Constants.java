@@ -37,7 +37,7 @@ public class Constants {
             {0, -1}, {-1, 0}
     };
 
-    public static Player PLAYER = new Player("Player", new Location(1, 1));
+    public static Player PLAYER = new Player(JOptionPane.showInputDialog("Please enter your desired player name"), new Location(1, 1));
 
     public static GamePanel gamePanel = new GamePanel();
     public static InventoryPanel inventoryPanel = new InventoryPanel();

@@ -150,7 +150,6 @@ public class Player extends Entity {
         int score = Arrays.stream(xpInSkills).sum();
         score += (getInventory().getWorth()*100);
         Constants.CURRENT_SCORE = score;
-        System.out.println(score);
     }
 
     public void respawn(){

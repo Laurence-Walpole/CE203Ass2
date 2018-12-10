@@ -16,7 +16,6 @@ public class InventoryButton {
         this.buttonLabel = buttonAction.getLabel();
         this.buttonLocation = buttonLocation;
         this.relatedItem = relatedItem;
-        System.out.println(String.format("Label: %s, Item: %s", buttonLabel, relatedItem.getName()));
     }
     public InventoryButtonAction getButtonAction() {
         return buttonAction;

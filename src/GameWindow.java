@@ -21,6 +21,7 @@ public class GameWindow extends JFrame {
                         "Any consumable items you can eat/use to add bonuses to your character"
         );
         Highscores.loadHighscores();
+
         init();
         Constants.inventoryPanel.repaint();
         Constants.gamePanel.gameLoop();
