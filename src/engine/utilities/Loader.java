@@ -79,7 +79,7 @@ public class Loader {
             int d = Integer.valueOf(components[4]);
             int h = Integer.valueOf(components[5]);
             int dr = Integer.valueOf(components[6]);
-            entity = new NPC(name, new Location(0,0), type, tag, a, d, h, dr);
+            entity = new NPC(name, new Location(0,0), type, tag, dr, a, d, h);
             if (tag.equals("B")) {
                 entity.setColour(new Color(135, 1, 1));
             }else{

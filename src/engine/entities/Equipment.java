@@ -31,15 +31,15 @@ public class Equipment extends Item {
     }
 
     public int getAttackBonus() {
-        return attackBonus;
+        return attackBonus * getItemClass().getMultiplier();
     }
 
     public int getDefenceBonus() {
-        return defenceBonus;
+        return defenceBonus * getItemClass().getMultiplier();
     }
 
     public int getHitpointsBonus() {
-        return hitpointsBonus;
+        return hitpointsBonus * getItemClass().getMultiplier();
     }
 
     @Override

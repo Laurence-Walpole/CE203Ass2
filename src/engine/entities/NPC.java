@@ -74,6 +74,10 @@ public class NPC extends Entity {
         return dropTable;
     }
 
+    public void removeHitpoints(int amount){
+        this.hitpoints -= amount;
+    }
+
 
     public static NPC isTagInNPCList(String tag){
         for (Entity entity : Constants.ENTITY_LIST){

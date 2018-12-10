@@ -1,12 +1,12 @@
 package engine.utilities;
 
-import com.sun.org.apache.bcel.internal.classfile.ConstantString;
 import engine.Constants;
+import engine.Entity;
 import engine.Map;
 
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.List;
 
 public class PlayerKeyListener implements KeyListener {
     @Override
@@ -56,10 +56,10 @@ public class PlayerKeyListener implements KeyListener {
                 break;
 
             case KeyEvent.VK_SPACE:
-                System.out.println(Map.getEntityInRadius(Constants.PLAYER.getLocation()));
-//                Tile[] tilesAroundPlayer = new Tile[] {
-//
-//                };
+                List<Entity> entities = Map.getEntityInRadius(Constants.PLAYER.getLocation());
+                for(Entity entity : entities){
+                    Combat.performAttack(entity);
+                }
                 break;
         }
     }

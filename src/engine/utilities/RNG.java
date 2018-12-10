@@ -2,7 +2,9 @@ package engine.utilities;
 
 import engine.Constants;
 import engine.Entity;
+import engine.Skills;
 import engine.entities.Item;
+import engine.entities.NPC;
 import engine.items.Container;
 import engine.items.ItemClass;
 
@@ -12,6 +14,19 @@ public class RNG {
 
     public static Item generateItemRarity(Item item){
         return item.setItemClass(getRandomItemClass());
+    }
+
+    public static int[] damageDealt(Entity entity){
+        double playerAttack = Constants.PLAYER.calculateLevel(Skills.ATTACK);
+        double playerDefence = Constants.PLAYER.calculateLevel(Skills.DEFENCE);
+
+        double entityAttack = ((NPC) entity).getAttack();
+        double entityDefence = ((NPC) entity).getDefence();
+
+        Double playerMaxHit = Math.floor((playerAttack / entityDefence) * 10);
+        Double entityMaxHit = Math.floor((entityAttack / playerDefence) * 10);
+
+        return new int[] {randomNumberBetween(0,playerMaxHit.intValue()), randomNumberBetween(0, entityMaxHit.intValue())};
     }
 
     public static ItemClass getRandomItemClass(){

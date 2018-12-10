@@ -3,6 +3,7 @@ package engine.items;
 import engine.Constants;
 import engine.Entity;
 import engine.entities.Item;
+import engine.utilities.Log;
 import engine.utilities.UUID;
 
 import java.util.HashMap;
@@ -55,12 +56,18 @@ public class Container {
     }
 
     public boolean removeItem(Entity item){
-        System.out.println("Item removed: " + item);
-        if (getContainer().get(item) != 1) {
-            getContainer().replace(item, getContainer().get(item), getContainer().get(item) - 1);
+        Log.gameLog.add("Item removed: " + item);
+        try {
+            if (getContainer().get(item) != 1) {
+                getContainer().replace(item, getContainer().get(item), getContainer().get(item) - 1);
+                return false;
+            }
+        }catch (NullPointerException e){
+            Constants.inventoryPanel.repaint();
             return false;
         }
         getContainer().remove(item);
+        System.out.println(getContainer());
         return true;
     }
 
@@ -74,6 +81,14 @@ public class Container {
             }
         }
         return maxDist;
+    }
+
+    public int getWorth(){
+        int totalWorth = 0;
+        for(Map.Entry item : getContainer().entrySet()){
+            totalWorth += ((Item)item.getKey()).getItemWorth() * (int)item.getValue();
+        }
+        return totalWorth;
     }
 
     @Override

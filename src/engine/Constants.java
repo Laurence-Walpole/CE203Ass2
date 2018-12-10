@@ -22,6 +22,8 @@ public class Constants {
     public static Map GAME_MAP = new Map();
     public static int maxX = 0, maxY = 0;
 
+    public static int CURRENT_SCORE = 0;
+
     public static final int TILE_SIZE = 25;
 
     public static final int MAX_FPS = 24;

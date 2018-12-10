@@ -104,6 +104,10 @@ public class Entity {
         }
     }
 
+    public void killEntity(){
+        Constants.ENTITIES_IN_GAME.remove(this);
+    }
+
     public void setLocation(Location location) {
         this.location = location;
     }

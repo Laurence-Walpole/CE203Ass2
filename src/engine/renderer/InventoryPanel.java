@@ -7,6 +7,7 @@ import engine.entities.Item;
 import engine.items.ItemType;
 import engine.utilities.InventoryButtonAction;
 import engine.utilities.Location;
+import engine.utilities.Log;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +21,7 @@ public class InventoryPanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics graphics){
+        inventoryButtons.clear();
         super.paintComponent(graphics);
         Graphics2D graphics2D = (Graphics2D) graphics;
 
@@ -30,6 +32,7 @@ public class InventoryPanel extends JPanel {
         Map<Entity, Integer> inv = Constants.PLAYER.getItems();
         graphics2D.drawString("Player Inventory:", 15, 15);
         graphics2D.drawString("Player Stats:", 300, 15);
+        graphics2D.drawString("Game Log:", 300, 80);
 
         int y = 15;
         int maxDist = Constants.PLAYER.getInventory().findLongestString();
@@ -55,6 +58,12 @@ public class InventoryPanel extends JPanel {
             Skills skill = Skills.getSkill(i);
             String skillString = skill.getName() + ": " + Constants.PLAYER.calculateLevel(skill);
             graphics2D.drawString(skillString, 300, y += 15);
+        }
+
+        graphics2D.setColor(new Color(19, 81, 181));
+        y = 80;
+        for (String logItem : Log.getRecentFive()){
+            graphics2D.drawString(logItem, 300, y+= 15);
         }
 
     }
