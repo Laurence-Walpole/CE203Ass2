@@ -11,7 +11,7 @@ public class GameWindow extends JFrame {
     static GameWindow gw = new GameWindow();
     public static void main(String[] args){
         JOptionPane.showMessageDialog(null,
-                "Welcome to my RPG!\n" +
+                "Welcome!\n\n" +
                         "You control the Player using 'WASD'\n" +
                         "You open chests (the gold squares) using 'E'\n" +
                         "You attack monsters (red circles) using 'Space'\n" +

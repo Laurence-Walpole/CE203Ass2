@@ -17,9 +17,9 @@ public class Highscores {
 
         File file = new File("RPG_HS.save");
         try{
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-            writer.newLine();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
             writer.write("["+winTimeDate + "]: " +Constants.CURRENT_SCORE);
+            writer.newLine();
             writer.close();
         }catch(IOException e){
             System.out.println(e.getMessage());

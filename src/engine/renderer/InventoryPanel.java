@@ -52,7 +52,7 @@ public class InventoryPanel extends JPanel {
             graphics2D.drawString(btn1.getButtonLabel(), maxDist, y);
             graphics2D.drawString(btn2.getButtonLabel(), maxDist + 40, y);
         }
-        graphics2D.setColor(new Color(255, 193, 193));
+        graphics2D.setColor(new Color(171, 157, 242));
         y = 15;
         for (int i = 0; i < Constants.PLAYER.getXpInSkills().length; i++){
             Skills skill = Skills.getSkill(i);
@@ -60,7 +60,7 @@ public class InventoryPanel extends JPanel {
             graphics2D.drawString(skillString, 300, y += 15);
         }
 
-        graphics2D.setColor(new Color(19, 81, 181));
+        graphics2D.setColor(new Color(120, 220, 232));
         y = 80;
         for (String logItem : Log.getRecentFive()){
             graphics2D.drawString(logItem, 300, y+= 15);

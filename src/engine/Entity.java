@@ -88,7 +88,7 @@ public class Entity {
 
         graphics2D.fillOval(offsetX, offsetY, Constants.TILE_SIZE, Constants.TILE_SIZE);
         graphics2D.setColor(Color.white);
-        graphics2D.drawString(tag, offsetX + (Constants.TILE_SIZE/2), offsetY + (Constants.TILE_SIZE/2));
+        graphics2D.drawString(tag, (offsetX + (Constants.TILE_SIZE/2))-5, offsetY + ((Constants.TILE_SIZE/2))+5);
     }
 
     public void doMove(){

@@ -6,8 +6,8 @@ public enum TileType {
 
     WALL("Wall", "W" , false, false, Color.DARK_GRAY),
     FLOOR("Floor", "F", true, true, Color.LIGHT_GRAY),
-    DOOR("Door", "D", true, false, new Color(86, 59, 24)),
-    CHEST("Chest", "C", true, false, Color.ORANGE),
+    DOOR("Door", "D", true, false, new Color(120, 75, 25)),
+    CHEST("Chest", "C", true, false, new Color(255, 216, 102)),
     NULL("Null", "N", true, true, new Color(255, 0, 242));
 
     String name, icon;

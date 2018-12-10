@@ -148,7 +148,7 @@ public class Player extends Entity {
 
     public void setScore(){
         int score = Arrays.stream(xpInSkills).sum();
-        score += getInventory().getWorth();
+        score += (getInventory().getWorth()*100);
         Constants.CURRENT_SCORE = score;
         System.out.println(score);
     }
