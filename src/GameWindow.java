@@ -9,6 +9,16 @@ import java.awt.*;
 public class GameWindow extends JFrame {
     static GameWindow gw = new GameWindow();
     public static void main(String[] args){
+        JOptionPane.showMessageDialog(null,
+                "Welcome to my RPG!\n" +
+                        "You control the Player using 'WASD'\n" +
+                        "You open chests (the gold squares) using 'E'\n" +
+                        "You attack monsters (red circles) using 'Space'\n" +
+                        "To attack a monster you must be next to it.\n" +
+                        "Monsters cannot go through doors (brown squares)\n" +
+                        "You can equip any equipment you find in your inventory panel\n" +
+                        "Any consumable items you can eat/use to add bonuses to your character"
+        );
         init();
         Constants.inventoryPanel.repaint();
         Constants.gamePanel.gameLoop();
@@ -23,6 +33,7 @@ public class GameWindow extends JFrame {
         addMouseListener(new InventoryMouseListener());
         setResizable(false);
         setLayout(null);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 

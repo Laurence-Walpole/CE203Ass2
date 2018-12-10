@@ -8,6 +8,7 @@ import engine.renderer.InventoryPanel;
 import engine.utilities.Location;
 import engine.utilities.UUID;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,5 +41,6 @@ public class Constants {
 
     public static GamePanel gamePanel = new GamePanel();
     public static InventoryPanel inventoryPanel = new InventoryPanel();
+    public static JPanel playerCreationPanel = new JPanel();
 
 }

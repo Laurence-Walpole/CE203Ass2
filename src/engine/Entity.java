@@ -112,6 +112,10 @@ public class Entity {
         this.location = location;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return String.format("UUID: %s, Name: %s, Location: %s, Shape: %s", getId().getUuid(), getName(), getLocation(), getShape());

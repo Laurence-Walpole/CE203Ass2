@@ -2,6 +2,7 @@ package engine.renderer;
 
 import engine.Constants;
 import engine.Entity;
+import engine.utilities.Highscores;
 import engine.utilities.Tile;
 
 import javax.swing.*;
@@ -25,8 +26,12 @@ public class GamePanel extends JPanel {
         TimerTask tick = new TimerTask() {
             @Override
             public void run() {
-                for (Entity entity : Constants.ENTITIES_IN_GAME){
-                    entity.doMove();
+                if (Constants.ENTITIES_IN_GAME.size() != 0) {
+                    for (Entity entity : Constants.ENTITIES_IN_GAME) {
+                        entity.doMove();
+                    }
+                }else{
+                    Highscores.saveHighscores();
                 }
             }
         };
