@@ -41,6 +41,5 @@ public class Constants {
 
     public static GamePanel gamePanel = new GamePanel();
     public static InventoryPanel inventoryPanel = new InventoryPanel();
-    public static JPanel playerCreationPanel = new JPanel();
 
 }

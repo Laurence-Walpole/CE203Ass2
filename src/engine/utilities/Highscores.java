@@ -12,18 +12,19 @@ public class Highscores {
     public static void saveHighscores(){
         Constants.PLAYER.setScore();
         String winMessage = "Congratulations, you have won! You finished with a score of: " + Constants.CURRENT_SCORE;
-        String winTimeDate = (new SimpleDateFormat("yyyy-MM-dd|HH.mm.ss")).format(new Date());
+        String winTimeDate = (new SimpleDateFormat("yyyy-MM-dd | HH.mm.ss")).format(new Date());
         JOptionPane.showMessageDialog(null, winMessage);
 
         File file = new File("RPG_HS.save");
         try{
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
             writer.newLine();
-            writer.write(winTimeDate + ":" +Constants.CURRENT_SCORE);
+            writer.write("["+winTimeDate + "]: " +Constants.CURRENT_SCORE);
             writer.close();
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
+        System.exit(0);
     }
 
     public static void loadHighscores(){
