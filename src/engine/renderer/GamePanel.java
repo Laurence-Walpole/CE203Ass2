@@ -23,6 +23,7 @@ public class GamePanel extends JPanel {
     }
 
     public void gameLoop(){
+        Timer t = new Timer();
         TimerTask tick = new TimerTask() {
             @Override
             public void run() {
@@ -32,6 +33,7 @@ public class GamePanel extends JPanel {
                     }
                 }else{
                     Highscores.saveHighscores();
+                    t.cancel();
                 }
             }
         };
@@ -42,7 +44,6 @@ public class GamePanel extends JPanel {
                 repaint();
             }
         };
-        Timer t = new Timer();
         t.scheduleAtFixedRate(tick, 0, 1000 / Constants.MAX_UPS);
         t.schedule(render, 0, 1000 / Constants.MAX_FPS);
     }

@@ -1,4 +1,5 @@
 import engine.Constants;
+import engine.utilities.Highscores;
 import engine.utilities.InventoryMouseListener;
 import engine.utilities.Loader;
 import engine.utilities.PlayerKeyListener;
@@ -19,6 +20,7 @@ public class GameWindow extends JFrame {
                         "You can equip any equipment you find in your inventory panel\n" +
                         "Any consumable items you can eat/use to add bonuses to your character"
         );
+        Highscores.loadHighscores();
         init();
         Constants.inventoryPanel.repaint();
         Constants.gamePanel.gameLoop();
