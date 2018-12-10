@@ -23,7 +23,7 @@ public class InventoryMouseListener implements MouseListener {
                 e.getY() >= btnTopY &&
                 e.getX() <=  btnBottomX &&
                 e.getY() <= btnBottomY){
-                Constants.PLAYER.useItem(button.getRelatedItem(), button.getButtonAction());
+                Constants.PLAYER.useItem(button.getRelatedItem(), button.getButtonAction(), button);
                 break;
             }
         }

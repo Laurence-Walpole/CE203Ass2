@@ -1,6 +1,8 @@
 package engine.utilities;
 
+import com.sun.org.apache.bcel.internal.classfile.ConstantString;
 import engine.Constants;
+import engine.Map;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -42,7 +44,7 @@ public class PlayerKeyListener implements KeyListener {
                 if (Constants.GAME_MAP.isTileAccessible(l)) Constants.PLAYER.setLocation(l);
                 break;
 
-            case KeyEvent.VK_SPACE:
+            case KeyEvent.VK_E:
                 Tile tile = Constants.PLAYER.isPlayerOnChest();
                 if (tile != null){
                     if (Constants.PLAYER.getItems().size() < 10) {
@@ -51,6 +53,13 @@ public class PlayerKeyListener implements KeyListener {
                     }
                 }
                 Constants.inventoryPanel.repaint();
+                break;
+
+            case KeyEvent.VK_SPACE:
+                System.out.println(Map.getEntityInRadius(Constants.PLAYER.getLocation()));
+//                Tile[] tilesAroundPlayer = new Tile[] {
+//
+//                };
                 break;
         }
     }

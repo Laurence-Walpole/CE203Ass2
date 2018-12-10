@@ -6,9 +6,7 @@ import engine.utilities.Location;
 import engine.utilities.RNG;
 import engine.utilities.UUID;
 
-import javax.swing.*;
 import java.awt.*;
-import java.util.Random;
 
 public class Entity {
 

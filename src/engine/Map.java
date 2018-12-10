@@ -1,13 +1,14 @@
 package engine;
 
 import engine.entities.NPC;
-import engine.entities.NPCType;
 import engine.renderer.TileType;
 import engine.utilities.Location;
 import engine.utilities.Tile;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Map {
 
@@ -56,6 +57,13 @@ public class Map {
             }
         }
         return false;
+    }
+
+    public static List<Entity> getEntityInRadius(Location location){
+        List<Location> locations = Arrays.stream(Constants.MOVEMENT_OPTIONS)
+                .map(c -> location.copyOf().addXandYandReturn(c)).collect(Collectors.toList());
+        return Constants.ENTITIES_IN_GAME.stream()
+                .filter(entity -> entity.getLocation().isLocationIn(locations)).collect(Collectors.toList());
     }
 
     public void removeTile(Tile tile){

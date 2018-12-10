@@ -24,13 +24,6 @@ public class Container {
         Constants.CONTAINERS.add(this);
     }
 
-    public Container(String name, HashMap<Entity, Integer> inventory){
-        this.id = new UUID();
-        this.name = name;
-        this.inventory = inventory;
-        Constants.CONTAINERS.add(this);
-    }
-
     public UUID getId() {
         return id;
     }
@@ -61,8 +54,14 @@ public class Container {
         }
     }
 
-    public void removeItem(Entity item){
+    public boolean removeItem(Entity item){
+        System.out.println("Item removed: " + item);
+        if (getContainer().get(item) != 1) {
+            getContainer().replace(item, getContainer().get(item), getContainer().get(item) - 1);
+            return false;
+        }
         getContainer().remove(item);
+        return true;
     }
 
     public int findLongestString(){

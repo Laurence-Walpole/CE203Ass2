@@ -1,6 +1,4 @@
 import engine.Constants;
-import engine.renderer.GamePanel;
-import engine.renderer.InventoryPanel;
 import engine.utilities.InventoryMouseListener;
 import engine.utilities.Loader;
 import engine.utilities.PlayerKeyListener;

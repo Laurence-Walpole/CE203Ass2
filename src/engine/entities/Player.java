@@ -5,6 +5,8 @@ import engine.Entity;
 import engine.Skills;
 import engine.items.Container;
 import engine.items.ItemType;
+import engine.renderer.InventoryButton;
+import engine.renderer.InventoryPanel;
 import engine.renderer.TileType;
 import engine.utilities.InventoryButtonAction;
 import engine.utilities.Location;
@@ -12,8 +14,6 @@ import engine.utilities.Tile;
 
 import java.awt.*;
 import java.util.Map;
-import java.util.OptionalInt;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Player extends Entity {
@@ -69,9 +69,11 @@ public class Player extends Entity {
         return getLevelAtExperience(getXpInSkill(skill));
     }
 
-    public void useItem(Item itemToUse, InventoryButtonAction buttonAction){
+    public void useItem(Item itemToUse, InventoryButtonAction buttonAction, InventoryButton button){
         if (buttonAction == InventoryButtonAction.DROP){
-            getInventory().removeItem(itemToUse);
+            if (getInventory().removeItem(itemToUse)){
+                InventoryPanel.inventoryButtons.remove(button);
+            }
         } else if (buttonAction == InventoryButtonAction.USE){
             if (itemToUse.getItemType() == ItemType.CONSUMABLE){
                 int attackXP = calculateXpToGain(itemToUse, 0);
@@ -81,7 +83,9 @@ public class Player extends Entity {
                 addXpInSkill(Skills.ATTACK, attackXP);
                 addXpInSkill(Skills.DEFENCE, defenceXP);
                 addXpInSkill(Skills.HITPOINTS, hpXP);
-                getInventory().removeItem(itemToUse);
+                if (getInventory().removeItem(itemToUse)){
+                    InventoryPanel.inventoryButtons.remove(button);
+                }
             }
         }
 
